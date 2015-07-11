@@ -72,9 +72,8 @@ ggplot(data=interval_mean,
        labs(x = "Intervals", y = "Number of Steps")
 ```
 
-```{r}
-interval_mean[which.max(interval_mean$mean),1]
-```
+The interval with the largest mean of total steps is `r interval_mean[which.max(interval_mean$mean),1]` given by `interval_mean[which.max(interval_mean$mean),1]`. This clearly matches the plot above.
+
 
 
 

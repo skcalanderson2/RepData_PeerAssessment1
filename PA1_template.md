@@ -88,17 +88,8 @@ ggplot(data=interval_mean,
 
 ![](PA1_template_files/figure-html/plot2-1.png) 
 
+The interval with the largerst mean of total steps is 835 given by `interval_mean[which.max(interval_mean$mean),1]`. This clearly matches the plot above.
 
-```r
-interval_mean[which.max(interval_mean$mean),1]
-```
-
-```
-## Source: local data frame [1 x 1]
-## 
-##   interval
-## 1      835
-```
 
 
 
