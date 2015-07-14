@@ -163,25 +163,11 @@ interval_mean_weekend <- summarise(by_interval_weekend,
 
 In the plots below it is clear that there is more activity across the intervals, i.e. during the day, on the weekends compared to the weekdays. On the weekdays, there is increased activity in the morning intervals but less in general during the rest of the day.
 
-```r
-p1 <- ggplot(data=interval_mean_weekday, 
-       aes(x=interval, y=mean)) + geom_line() +   
-       labs(x = "Intervals", y = "Number of Steps")
-
-p2 <- ggplot(data=interval_mean_weekend, 
-       aes(x=interval, y=mean)) + geom_line() +   
-       labs(x = "Intervals", y = "Number of Steps")
-p1 <- p1 + theme_bw()
-p2 <- p2 + theme_bw()
-plot_grid(p2,p1, labels = c("Weekend", "Weekday"), label_size = 10, ncol=1, nrow = 2)
-```
-
-![](PA1_template_files/figure-html/plot 2-1.png) 
 
 ```r
 interval_mean_weekend <- mutate(interval_mean_weekend, day_of_week = as.factor("Weekend"))
 interval_mean_weekday <- mutate(interval_mean_weekday, day_of_week = as.factor("Weekday"))
-interval_mean <- rbind(interval_mean_weekday, interval_mean_weekend)
+interval_mean <- rbind(interval_mean_weekend, interval_mean_weekday)
 g <- ggplot(interval_mean, aes(interval, mean))
 g + geom_line() + facet_grid(day_of_week~.) + theme_bw() + labs(x = "Intervals", y = "Number of Steps")
 ```
