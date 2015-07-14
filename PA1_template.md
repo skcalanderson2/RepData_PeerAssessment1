@@ -88,7 +88,7 @@ ggplot(data=interval_mean,
 
 ![](PA1_template_files/figure-html/plot2-1.png) 
 
-The interval with the largerst mean of total steps is 835 given by `interval_mean[which.max(interval_mean$mean),1]`. This clearly matches the plot above.
+The interval with the largest mean of total steps is 835 given by `interval_mean[which.max(interval_mean$mean),1]`. This clearly matches the plot above.
 
 
 
@@ -171,11 +171,22 @@ p1 <- ggplot(data=interval_mean_weekday,
 p2 <- ggplot(data=interval_mean_weekend, 
        aes(x=interval, y=mean)) + geom_line() +   
        labs(x = "Intervals", y = "Number of Steps")
+p1 <- p1 + theme_bw()
+p2 <- p2 + theme_bw()
 plot_grid(p2,p1, labels = c("Weekend", "Weekday"), label_size = 10, ncol=1, nrow = 2)
 ```
 
 ![](PA1_template_files/figure-html/plot 2-1.png) 
 
+```r
+interval_mean_weekend <- mutate(interval_mean_weekend, day_of_week = as.factor("Weekend"))
+interval_mean_weekday <- mutate(interval_mean_weekday, day_of_week = as.factor("Weekday"))
+interval_mean <- rbind(interval_mean_weekday, interval_mean_weekend)
+g <- ggplot(interval_mean, aes(interval, mean))
+g + geom_line() + facet_grid(day_of_week~.) + theme_bw() + labs(x = "Intervals", y = "Number of Steps")
+```
+
+![](PA1_template_files/figure-html/plot 4-1.png) 
 
 
 
